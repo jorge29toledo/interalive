@@ -3,25 +3,22 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: root
-  password: root
-  host: localhost
+  url: <%= ENV["DATABASE_URL"] %>
+  # username: root
+  # password: root
+  # host: localhost
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 
 development:
   <<: *default
-  database: interalive_development
 
 test:
   <<: *default
   database: interalive_test
 
-#
 production:
   <<: *default
-  database: interalive_production
-  username: interalive
-  password: <%= ENV["INTERALIVE_DATABASE_PASSWORD"] %>
+  
